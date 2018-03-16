@@ -1,0 +1,64 @@
+# Yleisimmät listattu tähän, huom tämä ottaa huomioon koko puussa
+# joten voi joutua pakottamalla lisäämään yksittäisiä tiedostoja
+# git add --force my/ignore/file.foo
+
+# kansiot
+**/.vs/*
+**/[Dd]ebug/*
+**/[Rr]elease/*
+**/x64/*
+**/x86/*
+**/build/*
+**/bld/*
+**/[Bb]in/*
+**/[Oo]bj/*
+**/packages/*
+**/node_modules/*
+**/_UpgradeReport_Files/*
+**/Backup*/*
+**/[Tt]est[Rr]esult*/*
+
+# tiedostot
+**/*.suo
+**/*.user
+**/*.sln.docstates
+**/*_i.c
+**/*_p.c
+**/*_i.h
+**/*.ilk
+**/*.meta
+**/*.obj
+**/*.pch
+**/*.pdb
+**/*.pgc
+**/*.pgd
+**/*.rsp
+**/*.sbr
+**/*.tlb
+**/*.tli
+**/*.tlh
+**/*.tmp
+**/*.tmp_proj
+**/*.log
+**/*.vspscc
+**/*.vssscc
+**/.builds
+**/*.pidb
+**/*.svclog
+**/*.scc
+**/Thumbs.db
+**/ehthumbs.db
+**/Desktop.ini
+**/$RECYCLE.BIN/
+**/*.cab
+**/*.msi
+**/*.msm
+**/*.msp
+**/*.lnk
+**/UpgradeLog*.XML
+**/UpgradeLog*.htm
+**/*.rdl.data
+**/*.bim.layout
+**/*.bim_*.settings
+**/*.dbmdl
+**/*.jfm
