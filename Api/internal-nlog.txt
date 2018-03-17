@@ -1,0 +1,19 @@
+2018-03-17 10:04:26.3448 Error Parsing configuration from C:\Hackaton\alfamereporting\Api\nlog.config failed. Exception: NLog.NLogConfigurationException: Exception when parsing C:\Hackaton\alfamereporting\Api\nlog.config.  ---> NLog.NLogConfigurationException: Target ownFile-web not found.
+   at NLog.Config.XmlLoggingConfiguration.ParseLoggerElement(NLogXmlElement loggerElement, IList`1 rulesCollection)
+   at NLog.Config.XmlLoggingConfiguration.ParseRulesElement(NLogXmlElement rulesElement, IList`1 rulesCollection)
+   at NLog.Config.XmlLoggingConfiguration.ParseNLogElement(NLogXmlElement nlogElement, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.ParseTopLevel(NLogXmlElement content, String filePath, Boolean autoReloadDefault)
+   at NLog.Config.XmlLoggingConfiguration.Initialize(XmlReader reader, String fileName, Boolean ignoreErrors)
+   --- End of inner exception stack trace ---
+2018-03-17 12:00:06.9033 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
+2018-03-17 12:07:20.6736 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
+2018-03-17 12:08:25.2416 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
+2018-03-17 12:08:25.3286 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
+2018-03-17 12:09:49.5925 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
+2018-03-17 12:09:49.6846 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
+2018-03-17 12:16:48.7468 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
+2018-03-17 12:16:48.8533 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
+2018-03-17 12:28:32.0639 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
+2018-03-17 12:28:32.0984 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
+2018-03-17 12:51:40.6181 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
+2018-03-17 12:54:28.5402 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: blackhole
