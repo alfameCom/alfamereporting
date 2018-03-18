@@ -1,32 +1,7 @@
 ﻿using System.Collections.Generic;
 
-namespace Models
+namespace Models.Slack
 {
-    public class Action
-    {
-        public string name { get; set; }
-        public string type { get; set; }
-        public string value { get; set; }
-    }
-
-    public class Team
-    {
-        public string id { get; set; }
-        public string domain { get; set; }
-    }
-
-    public class Channel
-    {
-        public string id { get; set; }
-        public string name { get; set; }
-    }
-
-    public class User
-    {
-        public string id { get; set; }
-        public string name { get; set; }
-    }
-
     public class Payload
     {
         public string type { get; set; }

@@ -1,13 +1,11 @@
 ﻿using Api.Handlers;
-using Models;
+using Models.Slack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -21,19 +19,19 @@ namespace Api.Controllers
     [Route("api/reportingbot")]
     public class ReportingController : BaseController
     {
-        private string _testMessage = @"
+        private string _command = @"
 {
    'text': 'Welcome!',
    'attachments': [
        {
            'text': 'Please choose what to report',
-           'fallback': 'You are unable to report',
+           'fallback': 'Please contact the Pää-arkkitehti',
            'callback_id': 'wopr_command',
            'color': '#3AA3E3',
            'attachment_type': 'default',
            'actions': [
                {
-                   'name': 'comand',
+                   'name': 'command',
                    'text': 'Success',
                    'type': 'button',
                    'value': 'success',
@@ -60,7 +58,7 @@ namespace Api.Controllers
         public HttpResponseMessage Get()
         {
             Log.Trace($"Get()");
-            var jsonObject = JObject.Parse(_testMessage);
+            var jsonObject = JObject.Parse(_command);
             return Request.CreateResponse(HttpStatusCode.OK, jsonObject);
         }
 
@@ -100,7 +98,7 @@ namespace Api.Controllers
                 HandlePayload(payload);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, JObject.Parse(_testMessage));
+            return Request.CreateResponse(HttpStatusCode.OK, JObject.Parse(_command));
         }
 
         private HttpResponseMessage HandlePayload(Payload payload)

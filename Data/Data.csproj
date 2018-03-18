@@ -114,6 +114,7 @@
     <Compile Include="Entity\ReportingContext.cs" />
     <Compile Include="Entity\YammerHashtags.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportingContext.Extended.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

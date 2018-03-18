@@ -1,10 +1,7 @@
-﻿using Models;
+﻿using Models.Slack;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -15,7 +12,7 @@ namespace Api.Handlers
     /// <summary>
     ///
     /// </summary>
-    public class HandleSuccess
+    public class HandleSuccess : BaseHandler
     {
         private readonly Payload _payload;
         private readonly string _accessToken;
@@ -28,9 +25,9 @@ namespace Api.Handlers
        submit_label: 'Submit',
        elements: [
          {
-           label: 'Colleagues',
+           label: 'Colleagues1',
            type: 'select',
-           name: 'usernames',
+           name: 'usernames1',
 		   options: [
 			   {
 				label: 'Antti the great',
@@ -48,8 +45,73 @@ namespace Api.Handlers
 			    label: 'Petteri the n00b',
 				value: 'petteri'
 			   }
-		   ],
-           data_source: 'users'
+		   ]
+         },{
+           label: 'Colleagues2',
+           type: 'select',
+           name: 'usernames2',
+		   options: [
+			   {
+				label: 'Antti the great',
+				value: 'antti'
+			   },
+			   {
+				label: 'Matias the elder',
+				value: 'matias'
+			   },
+			   {
+			    label: 'David the pääarkkitehti',
+				value: 'david'
+			   },
+			   {
+			    label: 'Petteri the n00b',
+				value: 'petteri'
+			   }
+		   ]
+         },{
+           label: 'Colleagues3',
+           type: 'select',
+           name: 'usernames3',
+		   options: [
+			   {
+				label: 'Antti the great',
+				value: 'antti'
+			   },
+			   {
+				label: 'Matias the elder',
+				value: 'matias'
+			   },
+			   {
+			    label: 'David the pääarkkitehti',
+				value: 'david'
+			   },
+			   {
+			    label: 'Petteri the n00b',
+				value: 'petteri'
+			   }
+		   ]
+         },{
+           label: 'Colleagues4',
+           type: 'select',
+           name: 'usernames4',
+		   options: [
+			   {
+				label: 'Antti the great',
+				value: 'antti'
+			   },
+			   {
+				label: 'Matias the elder',
+				value: 'matias'
+			   },
+			   {
+			    label: 'David the pääarkkitehti',
+				value: 'david'
+			   },
+			   {
+			    label: 'Petteri the n00b',
+				value: 'petteri'
+			   }
+		   ]
          },
          {
            label: 'Message',
@@ -60,6 +122,10 @@ namespace Api.Handlers
 }
 ";
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="payload"></param>
         public HandleSuccess(Payload payload)
         {
             _payload = payload;
