@@ -2,6 +2,7 @@
 using Models.Slack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using NLog;
 using System;
 using System.Linq;
 using System.Net;
@@ -19,6 +20,8 @@ namespace Api.Controllers
     [Route("api/reportingbot")]
     public class ReportingController : BaseController
     {
+        private ILogger _logger = LogManager.GetCurrentClassLogger();
+
         private string _command = @"
 {
    'text': 'Welcome!',
@@ -57,7 +60,7 @@ namespace Api.Controllers
         [ResponseType(typeof(JObject))]
         public HttpResponseMessage Get()
         {
-            Log.Trace($"Get()");
+            _logger.Trace($"Get()");
             var jsonObject = JObject.Parse(_command);
             return Request.CreateResponse(HttpStatusCode.OK, jsonObject);
         }
@@ -71,12 +74,12 @@ namespace Api.Controllers
         [ResponseType(typeof(JObject))]
         public HttpResponseMessage Post(HttpRequestMessage message)
         {
-            Log.Trace($"Post uri: {message.RequestUri}");
+            _logger.Trace($"Post uri: {message.RequestUri}");
 
             var content = message.Content.ReadAsStringAsync().Result;
-            Log.Trace($"Post content: {content}");
+            _logger.Trace($"Post content: {content}");
             content = HttpUtility.UrlDecode(content);
-            Log.Trace($"Post content (decoded): {content}");
+            _logger.Trace($"Post content (decoded): {content}");
 
             // remove odd start
             content = content.StartsWith("payload=") ? content.Substring(8, content.Length - 8) : content;
@@ -87,7 +90,7 @@ namespace Api.Controllers
             {
                 // we hope there is a spoon
                 payload = JsonConvert.DeserializeObject<Payload>(content);
-                Log.Trace($"Post serialize ok: {payload != null}");
+                _logger.Trace($"Post serialize ok: {payload != null}");
             }
             catch (Exception)
             {

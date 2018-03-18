@@ -1,5 +1,6 @@
 ﻿using Models.Slack;
 using Newtonsoft.Json.Linq;
+using NLog;
 using System;
 using System.Configuration;
 using System.Net.Http;
@@ -14,6 +15,7 @@ namespace Api.Handlers
     /// </summary>
     public class HandleSuccess : BaseHandler
     {
+        private ILogger _logger = LogManager.GetCurrentClassLogger();
         private readonly Payload _payload;
         private readonly string _accessToken;
         private readonly string _verificationToken;
@@ -133,7 +135,7 @@ namespace Api.Handlers
             _verificationToken = ConfigurationManager.AppSettings["SLACK_VERIFICATION_TOKEN"];
             if (String.IsNullOrEmpty(_accessToken) || String.IsNullOrEmpty(_verificationToken))
             {
-                Log.Trace("Hope this helps.");
+                _logger.Trace("Hope this helps.");
                 throw new Exception("Hope this helps.");
             }
         }
@@ -146,7 +148,7 @@ namespace Api.Handlers
             // check it is valid
             if (_payload.token != _verificationToken)
             {
-                Log.Trace("This sure must help");
+                _logger.Trace("This sure must help");
                 throw new Exception("This sure must help");
             }
 
@@ -157,11 +159,11 @@ namespace Api.Handlers
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
             var response = client.PostAsync("https://slack.com/api/dialog.open", new StringContent(message.ToString(), Encoding.UTF8, "application/json")).Result;
-            Log.Trace($"Dialog message status code: {response.StatusCode}");
+            _logger.Trace($"Dialog message status code: {response.StatusCode}");
 
             var responseContent = response.Content.ReadAsStringAsync().Result;
             responseContent = HttpUtility.UrlDecode(responseContent);
-            Log.Trace($"Dialog message response: {responseContent}");
+            _logger.Trace($"Dialog message response: {responseContent}");
         }
     }
 }
